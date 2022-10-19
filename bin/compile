@@ -7,21 +7,21 @@ echo "_Compiling_ Logstash package :)"
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
-LOGSTASH=logstash-8.4.3.tar.gz
-
+LOGSTASH=logstash-8.4.3-linux-aarch64.tar.gz
 mkdir -p $CACHE_DIR
 
-LOGSTASH_URL=https://artifacts.elastic.co/downloads/logstash/$LOGSTASH
+LOGSTASH_URL=https://artifacts.elastic.co/downloads/logstash/${LOGSTASH}
 
 
-if [[ -f "$CACHE_DIR/$LOGSTASH" ]]; then
+if [[ -f "${CACHE_DIR}/${LOGSTASH}" ]]; then
     echo "Logstash package already detected in cache, skipping download."
 else
-    echo "Downloading Logstash into $CACHE_DIR ..."
-    curl --silent --location $LOGSTASH_URL -o $CACHE_DIR/$LOGSTASH
+    echo "Downloading Logstash into '${CACHE_DIR}/${LOGSTASH}' ..."
+    echo "curl --silent --location ${LOGSTASH_URL} -o ${CACHE_DIR}/${LOGSTASH}"
+    curl --silent --location ${LOGSTASH_URL} -o ${CACHE_DIR}/${LOGSTASH}
     echo "...done."
 fi
 
 echo "Unpacking Logstash..."
-tar -xzf $CACHE_DIR/$LOGSTASH -C $BUILD_DIR
+tar -xzf ${CACHE_DIR}/${LOGSTASH} -C ${BUILD_DIR}
 echo "...done."
