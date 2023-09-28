@@ -7,7 +7,7 @@ echo "_Compiling_ Logstash package :)"
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
-LOGSTASH=logstash-8.4.3-linux-x86_64.tar.gz
+LOGSTASH=logstash-8.10.2-linux-x86_64.tar.gz
 mkdir -p $CACHE_DIR
 
 LOGSTASH_URL=https://artifacts.elastic.co/downloads/logstash/${LOGSTASH}
